@@ -1084,7 +1084,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_47
+      name: Sprite_Mario_fire 1
       rect:
         serializedVersion: 2
         x: 61
@@ -1105,7 +1105,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_48
+      name: Sprite_Mario_ fire 2
       rect:
         serializedVersion: 2
         x: 79
@@ -1126,7 +1126,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_49
+      name: Sprite_Mario_fire 3
       rect:
         serializedVersion: 2
         x: 97
@@ -1210,7 +1210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_53
+      name: Sprite_Mario_glide 1
       rect:
         serializedVersion: 2
         x: 185
@@ -1231,7 +1231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_54
+      name: Sprite_Mario glide 2
       rect:
         serializedVersion: 2
         x: 218
@@ -1252,7 +1252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_55
+      name: Sprite_Mario_glide 3
       rect:
         serializedVersion: 2
         x: 253
@@ -1273,7 +1273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_56
+      name: Sprite_Mario_glide 4
       rect:
         serializedVersion: 2
         x: 286
@@ -1294,7 +1294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_57
+      name: Sprite_Mario_glide 6
       rect:
         serializedVersion: 2
         x: 315
@@ -1315,7 +1315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Mario_58
+      name: Sprite_Mario_glide 7
       rect:
         serializedVersion: 2
         x: 345
@@ -1388,6 +1388,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Sprite_Mario glide 2: 1644462112
+      Sprite_Mario_ fire 2: -1162458939
       Sprite_Mario_10: -1174045651
       Sprite_Mario_11: -347828101
       Sprite_Mario_12: -2064267184
@@ -1426,19 +1428,10 @@ TextureImporter:
       Sprite_Mario_44: 1204770271
       Sprite_Mario_45: -2090465852
       Sprite_Mario_46: 825800712
-      Sprite_Mario_47: -1472937048
-      Sprite_Mario_48: -1162458939
-      Sprite_Mario_49: 554341350
       Sprite_Mario_5: 1199576810
       Sprite_Mario_50: -802425992
       Sprite_Mario_51: 798213612
       Sprite_Mario_52: -445647595
-      Sprite_Mario_53: 276370359
-      Sprite_Mario_54: 1644462112
-      Sprite_Mario_55: -1156512961
-      Sprite_Mario_56: 1685386821
-      Sprite_Mario_57: 1516333361
-      Sprite_Mario_58: 1643644252
       Sprite_Mario_59: 1027705343
       Sprite_Mario_6: 935304671
       Sprite_Mario_60: 1257526620
@@ -1448,6 +1441,13 @@ TextureImporter:
       Sprite_Mario_Land: -1255092465
       Sprite_Mario_Walk 1: 1952404802
       Sprite_Mario_Walk 2: -1605841896
+      Sprite_Mario_fire 1: -1472937048
+      Sprite_Mario_fire 3: 554341350
+      Sprite_Mario_glide 1: 276370359
+      Sprite_Mario_glide 3: -1156512961
+      Sprite_Mario_glide 4: 1685386821
+      Sprite_Mario_glide 6: 1516333361
+      Sprite_Mario_glide 7: 1643644252
       Sprite_Mario_walk 3: -218424816
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

@@ -60,7 +60,17 @@ public class NewBehaviourScript : MonoBehaviour
             anim.SetBool("isGrounded", isGrounded);
         }
 
-        void CheckIsGrounded()
+        if (Input.GetButtonDown("Fire1") && isGrounded)
+        {
+            anim.SetTrigger("fire");
+        }
+        
+       if (Input.GetButtonDown("Fire1") && !isGrounded)
+        {
+            anim.SetTrigger("glideFall");
+        }
+
+            void CheckIsGrounded()
         {
             if (!isGrounded)
             { 
