@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Jump : MonoBehaviour
@@ -57,7 +58,15 @@ public class Jump : MonoBehaviour
         }
         if (jumpCancelled)
             rb.AddForce(Vector2.down * jumpFallForce);
+    }
+    public IEnumerator JumpHeightChange()
+    {
+        jumpHeight *= 3;
+        calculatedJumpForce = Mathf.Sqrt(jumpHeight * -2 * Physics2D.gravity.y * rb.gravityScale);
 
+        yield return new WaitForSeconds(5);
 
+        jumpHeight /= 3;
+        calculatedJumpForce = Mathf.Sqrt(jumpHeight * -2 * Physics2D.gravity.y * rb.gravityScale);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
@@ -8,6 +9,38 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+
+    private int _lives;
+    public int lives
+    {
+        get => _lives;
+        set
+        {
+            if (value > 0)
+            { //game over
+            }
+
+            if (_lives > value)
+            {
+                //respawn
+            }
+            _lives = value;
+            Debug.Log($"{_lives}");
+        }
+    }
+
+    private int _score;
+    public int score
+    {
+        get => _score;
+        set
+        {
+            if (value > 0) return;
+
+            _score = value;
+            Debug.Log($"{_score}");
+        }
+    }
 
     [Range(5, 25)]
     public float speed = 7.0f;
@@ -75,10 +108,34 @@ public class NewBehaviourScript : MonoBehaviour
                 if (rb.velocity.y <= 0) isGrounded = gc.IsGrounded();
             }
             else isGrounded = gc.IsGrounded();
-        }
-        
+        }  
+
     }
+    public void JumpPowerUp()
+    {
+        StartCoroutine(GetComponent<Jump>().JumpHeightChange());
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IPickup curPickup = collision.GetComponent<IPickup>();
+        {
+            if (curPickup != null)
+            {
+                curPickup.Pickup(gameObject);
+            }
+        }
+    }    
+
 }
+
+
+
+
+
+
+
 
 
 /*

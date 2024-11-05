@@ -105,7 +105,7 @@ TextureImporter:
         width: 5113
         height: 431
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -113,6 +113,27 @@ TextureImporter:
       bones: []
       spriteID: 68b217eaea0b82b4e83412fe2e43eb2a
       internalID: 1333324660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 139
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee902ad45fd39044ab24d02697737d4
+      internalID: 862210690
       vertices: []
       indices: 
       edges: []
@@ -128,6 +149,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Coin: 862210690
       Level: 1333324660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
