@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class RandomSpawn : MonoBehaviour
 {
-    [SerializeField] GameObject[] CoinPreferb, JumpBoostPreferb, LifePreferb;
+    [SerializeField] GameObject[] PowerUpPreferb;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine (powerSpawn());
+        //StartCoroutine (powerSpawn());
     }
 
     // Update is called once per frame
     void Update()
     {
-        IEnumerable powerSpawn()
-        {
-            for (int i = 0; i < 5; i++)
-            {
+       // IEnumerable powerSpawn()
+        //{
+           // for (int i = 0; i < 5; i++)
+           // {
 
-            }
-        }
+       //    // }
+       // }
     }
 }
