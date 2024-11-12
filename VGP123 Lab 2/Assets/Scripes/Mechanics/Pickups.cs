@@ -34,7 +34,7 @@ public class Pickups : MonoBehaviour
                 case PickupType.JumpBoost:
                     pc.JumpPowerUp();
                     break;
-                case PickupType.Shrink: break;
+                //case PickupType.Shrink: break;
                 case PickupType.Score:
                     pc.score++;
                     break;

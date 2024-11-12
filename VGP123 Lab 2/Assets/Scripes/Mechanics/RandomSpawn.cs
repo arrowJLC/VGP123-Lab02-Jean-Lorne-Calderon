@@ -1,27 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomSpawn : MonoBehaviour
+public class CollectibleSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] PowerUpPreferb;
+    public List<Transform> spawnPoints;
+    public List<GameObject> collectiblePrefabs;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine (powerSpawn());
+        SpawnCollectibles();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnCollectibles()
     {
-       // IEnumerable powerSpawn()
-        //{
-           // for (int i = 0; i < 5; i++)
-           // {
-
-       //    // }
-       // }
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            // Randomly select a collectible prefab from the list
+            GameObject collectible = collectiblePrefabs[Random.Range(0, collectiblePrefabs.Count)];
+            // Instantiate the collectible at the spawn point location
+            Instantiate(collectible, spawnPoint.position, Quaternion.identity);
+        }
     }
 }
