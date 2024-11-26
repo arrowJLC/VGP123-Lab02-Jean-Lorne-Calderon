@@ -15,9 +15,9 @@ public class CollectibleSpawner : MonoBehaviour
     {
         foreach (Transform spawnPoint in spawnPoints)
         {
-            // Randomly select a collectible prefab from the list
+            
             GameObject collectible = collectiblePrefabs[Random.Range(0, collectiblePrefabs.Count)];
-            // Instantiate the collectible at the spawn point location
+            
             Instantiate(collectible, spawnPoint.position, Quaternion.identity);
         }
     }

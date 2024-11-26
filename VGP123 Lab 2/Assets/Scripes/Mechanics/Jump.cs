@@ -51,7 +51,7 @@ public class Jump : MonoBehaviour
         {
             if(pc.isGrounded)
             {
-                jumpCancelled = false;
+                //jumpCancelled = false;
                 rb.velocity = Vector2.zero;
                 rb.AddForce(new Vector2(0, calculatedJumpForce), ForceMode2D.Impulse);
             }

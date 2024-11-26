@@ -45,7 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
     [Range(5, 25)]
     public float speed = 7.0f;
     [Range(3, 25)]
-    public float jumpForce = 7.0f;
+    public float bounceForce = 7.0f;
 
     public bool isGrounded = false;
 
@@ -54,8 +54,10 @@ public class NewBehaviourScript : MonoBehaviour
     SpriteRenderer sr;
     Animator anim;
     GroundCheck gc;
-    
-    
+
+    public Transform turretTransform;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +66,12 @@ public class NewBehaviourScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         gc = GetComponent<GroundCheck>();
-        
+
+        if (turretTransform == null)
+        {
+            Debug.LogWarning("Turret transform is not assigned.");
+        }
+
     }
 
     // Update is called once per frame
@@ -87,8 +94,8 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (hinput != 0) sr.flipX = (hinput < 0);
         {
-            anim.SetFloat("playSpeed", Mathf.Abs(hinput));
-            anim.SetBool("isGrounded", isGrounded);
+           // anim.SetFloat("playSpeed", Mathf.Abs(hinput));
+            //anim.SetBool("isGrounded", isGrounded);
         }
 
         if (Input.GetButtonDown("Fire1") && isGrounded)
@@ -101,39 +108,50 @@ public class NewBehaviourScript : MonoBehaviour
             anim.SetTrigger("glideFall");
         }
 
-            void CheckIsGrounded()
+        anim.SetFloat("playSpeed", Mathf.Abs(hinput));
+        anim.SetBool("isGrounded", isGrounded);
+
+        void CheckIsGrounded()
         {
             if (!isGrounded)
             {
                 if (rb.velocity.y <= 0) isGrounded = gc.IsGrounded();
             }
             else isGrounded = gc.IsGrounded();
-        }  
+        }
+
+        
+        Vector3 turretPosition = turretTransform.position;
+
+        
+        float distanceToTurret = Vector3.Distance(transform.position, turretPosition);
+
+        if (distanceToTurret < 5f) { }
+        
 
     }
     public void JumpPowerUp()
     {
         StartCoroutine(GetComponent<Jump>().JumpHeightChange());
     }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IPickup curPickup = collision.GetComponent<IPickup>();
+        if (collision.CompareTag("Squish"))
         {
-            if (curPickup != null)
-            {
-                curPickup.Pickup(gameObject);
-            }
+            collision.enabled = false;
+            collision.gameObject.GetComponentInParent<Enemy>().TakeDamage(9999);
+            rb.velocity = Vector2.zero;
+            rb.AddForce(Vector2.up * bounceForce, ForceMode2D.Impulse);
         }
-    }    
+
+        IPickup curPickup = collision.GetComponent<IPickup>();
+        if (curPickup != null)
+        {
+            curPickup.Pickup(gameObject);
+        }
+    }
 
 }
-
-
-
-
-
 
 
 
