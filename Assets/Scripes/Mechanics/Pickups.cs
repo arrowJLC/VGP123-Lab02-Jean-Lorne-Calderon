@@ -29,14 +29,14 @@ public class Pickups : MonoBehaviour
             switch (type)
             {
                 case PickupType.Life:
-                    pc.lives++;
+                    GameManager.Instance.lives++;
                     break;
                 case PickupType.JumpBoost:
                     pc.JumpPowerUp();
                     break;
                 //case PickupType.Shrink: break;
                 case PickupType.Score:
-                    pc.score++;
+                    //pc.score++;
                     break;
             }
             Destroy(gameObject);

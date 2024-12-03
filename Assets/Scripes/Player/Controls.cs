@@ -10,37 +10,37 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
 
-    private int _lives;
-    public int lives
-    {
-        get => _lives;
-        set
-        {
-            if (value > 0)
-            { //game over
-            }
+    //private int _lives;
+    //public int lives
+    //{
+    //    get => _lives;
+    //    set
+    //    {
+    //        if (value > 0)
+    //        { //game over
+    //        }
 
-            if (_lives > value)
-            {
-                //respawn
-            }
-            _lives = value;
-            Debug.Log($"{_lives}");
-        }
-    }
+    //        if (_lives > value)
+    //        {
+    //            //respawn
+    //        }
+    //        _lives = value;
+    //        Debug.Log($"{_lives}");
+    //    }
+    //}
 
-    private int _score;
-    public int score
-    {
-        get => _score;
-        set
-        {
-            if (value > 0) return;
+    //private int _score;
+    //public int score
+    //{
+    //    get => _score;
+    //    set
+    //    {
+    //        if (value > 0) return;
 
-            _score = value;
-            Debug.Log($"{_score}");
-        }
-    }
+    //        _score = value;
+    //        Debug.Log($"{_score}");
+    //    }
+    //}
 
     [Range(5, 25)]
     public float speed = 7.0f;
@@ -55,7 +55,7 @@ public class NewBehaviourScript : MonoBehaviour
     Animator anim;
     GroundCheck gc;
 
-    public Transform turretTransform;
+    //public Transform turretTransform;
 
 
 
@@ -67,10 +67,10 @@ public class NewBehaviourScript : MonoBehaviour
         anim = GetComponent<Animator>();
         gc = GetComponent<GroundCheck>();
 
-        if (turretTransform == null)
-        {
-            Debug.LogWarning("Turret transform is not assigned.");
-        }
+        //if (turretTransform == null)
+        //{
+        //    Debug.LogWarning("Turret transform is not assigned.");
+        //}
 
     }
 
@@ -121,12 +121,12 @@ public class NewBehaviourScript : MonoBehaviour
         }
 
         
-        Vector3 turretPosition = turretTransform.position;
+        //Vector3 turretPosition = turretTransform.position;
 
         
-        float distanceToTurret = Vector3.Distance(transform.position, turretPosition);
+        //float distanceToTurret = Vector3.Distance(transform.position, turretPosition);
 
-        if (distanceToTurret < 5f) { }
+        //if (distanceToTurret < 5f) { }
         
 
     }
