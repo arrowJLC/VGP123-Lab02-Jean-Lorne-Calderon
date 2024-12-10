@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector] public UnityEvent<int> OnLifeValueChanged;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
 
     //GAME PROPERTIES
-    [SerializeField] private int maxLives = 3;
+    [SerializeField] private int maxLives = 5;
     private int _lives;
     public int lives
     {
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
 
             _lives = value;
             Debug.Log($"{_lives} lives left");
+            OnLifeValueChanged?.Invoke(_lives);
         }
     }
     private int _score;
@@ -68,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (maxLives <= 0) maxLives = 3;
+        if (maxLives <= 0) maxLives = 5;
 
         _lives = maxLives;
         //ResetPlayerStats();
@@ -76,34 +79,36 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (SceneManager.GetActiveScene().name == "Main Menu" && Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Level");
-        }
-        else if (SceneManager.GetActiveScene().name == "Game Over" && Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Main Menu");
-        }
-    }
+    //DELEE UPDATE
+    //void Update()
+    //{
+    //    if (SceneManager.GetActiveScene().name == "Main Menu" && Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        SceneManager.LoadScene("Level");
+    //    }
+    //    else if (SceneManager.GetActiveScene().name == "Game Over" && Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        SceneManager.LoadScene("Main Menu");
+    //    }
+    //}
     
 
     void GameOver()
     {
-        Debug.Log("Game Over Should Go Here");
-        string sceneName = (SceneManager.GetActiveScene().name == "Game Over") ? "Main Menu" : "Game Over";
-        SceneManager.LoadScene(sceneName);
+        //SceneManager.LoadScene("Game Over");
+        //Debug.Log("Game Over Should Go Here");
+        //string sceneName = (SceneManager.GetActiveScene().name == "Game Over") ? "Main Menu" : "Game Over";
+        //SceneManager.LoadScene(sceneName);
 
-        if (SceneManager.GetActiveScene().name == "Game Over" && Input.GetKeyDown(KeyCode.Escape))
-        {
-           string sName = (SceneManager.GetActiveScene().name == "Main Menu") ? "Main Menu" : "Game Over";
-           SceneManager.LoadScene(sName);
-            _lives = 3;
-            maxLives = 3;
-            _lives = maxLives;
+        //if (SceneManager.GetActiveScene().name == "Game Over" && Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //   string sName = (SceneManager.GetActiveScene().name == "Main Menu") ? "Main Menu" : "Game Over";
+        //   SceneManager.LoadScene(sName);
+        //    _lives = 3;
+        //    maxLives = 3;
+        //    _lives = maxLives;
 
-        }
+        //}
 
     }
 

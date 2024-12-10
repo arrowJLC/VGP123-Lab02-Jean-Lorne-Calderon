@@ -7,7 +7,7 @@ public class Shoot : MonoBehaviour
     SpriteRenderer sr;
 
     public Vector2 initialShotVelocity = Vector2.zero;
-    public Vector2 initialShotVelocity2 = Vector2.zero;
+    //public Vector2 initialShotVelocity2 = Vector2.zero;
 
 
     public Transform spawnPointRight;
@@ -21,12 +21,12 @@ public class Shoot : MonoBehaviour
 
         if (initialShotVelocity == Vector2.zero)
         {
-            initialShotVelocity.x = -10.0f;
+            initialShotVelocity.x = 10.0f;
         }
-        if (initialShotVelocity2 == Vector2.zero)
-        {
-            initialShotVelocity2.x = 10.0f;
-        }
+        //if (initialShotVelocity2 == Vector2.zero)
+        //{
+        //    initialShotVelocity2.x = 10.0f;
+        //}
 
         if (!spawnPointRight || !spawnPointLeft || !ProjectilePrefab)
             Debug.Log($"for {gameObject.name}");
@@ -37,13 +37,13 @@ public class Shoot : MonoBehaviour
         if (sr.flipX)
         {
             Projectile curProjectile = Instantiate(ProjectilePrefab, spawnPointLeft.position, spawnPointLeft.rotation);
-            curProjectile.SetVelocity(initialShotVelocity);
+            curProjectile.SetVelocity(-initialShotVelocity);
         }
         else
         {
             Projectile curProjectile = Instantiate(ProjectilePrefab, spawnPointRight.position, spawnPointRight.rotation);
-            curProjectile.SetVelocity(initialShotVelocity2);
+            curProjectile.SetVelocity(initialShotVelocity);
         }
-       
+
    }
 }
