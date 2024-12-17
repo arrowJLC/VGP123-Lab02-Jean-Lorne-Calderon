@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialShotVelocity: {x: 0, y: 0}
-  initialShotVelocity2: {x: 3, y: 0}
   spawnPointRight: {fileID: 7456907930061424326}
   spawnPointLeft: {fileID: 762706141538514515}
   ProjectilePrefab: {fileID: 3803076627016064801, guid: a84125f6023636645a74e599a7c4871e, type: 3}
@@ -119,7 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e123f44861f75d54a9e9f86a1f40be6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: c0f8a92ad1aa0ad4aa9baa7776cb63c6, type: 3}
   maxHealth: 1
+  distThreshold: 5
   projectileFireRate: 2
 --- !u!95 &6594740543948754585
 Animator:

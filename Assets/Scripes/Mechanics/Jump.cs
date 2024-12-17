@@ -8,7 +8,7 @@ public class Jump : MonoBehaviour
     Rigidbody2D rb;
     NewBehaviourScript pc;
     //GroundCheck gc;
-
+    public AudioClip jumpSound;
 
     [SerializeField, Range(2, 25)] private float jumpHeight = 5;
     [SerializeField, Range(1, 100)] private float jumpFallForce = 10;
@@ -52,6 +52,7 @@ public class Jump : MonoBehaviour
             if(pc.isGrounded)
             {
                 //jumpCancelled = false;
+                pc.audioSource.PlayOneShot(jumpSound);
                 rb.velocity = Vector2.zero;
                 rb.AddForce(new Vector2(0, calculatedJumpForce), ForceMode2D.Impulse);
             }

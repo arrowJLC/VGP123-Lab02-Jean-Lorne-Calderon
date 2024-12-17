@@ -1,13 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public UnityEvent<int> OnLifeValueChanged;
+    public AudioMixerGroup SFXGroup;
+    public AudioMixerGroup MusicGroup;
+    [SerializeField] private AudioClip playerDeathSound;
+    private AudioSource audioSource;
+
+
+    [HideInInspector] public Action<int> OnLifeValueChanged;
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
@@ -21,7 +30,18 @@ public class GameManager : MonoBehaviour
         set
         {
             //do valid checking
-            if (value < 0)
+            if (value < _lives)
+            {
+                // Play death sound each time a life is lost
+                if (playerDeathSound != null && audioSource != null)
+                {
+                    Debug.Log("Playing death sound");
+                    audioSource.PlayOneShot(playerDeathSound);
+                }
+            }
+
+            // If the lives drop below 0, trigger GameOver
+            if (value <= 0)
             {
                 GameOver();
                 return;
@@ -57,6 +77,9 @@ public class GameManager : MonoBehaviour
 
     private Transform currentCheckpoint;
 
+    [HideInInspector]
+    public MenuController currentMenuController;
+
     void Awake()
     {
         if (_instance == null)
@@ -71,9 +94,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         if (maxLives <= 0) maxLives = 5;
 
         _lives = maxLives;
+
+       
         //ResetPlayerStats();
 
     }
@@ -95,8 +122,19 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
-        //SceneManager.LoadScene("Game Over");
-        //Debug.Log("Game Over Should Go Here");
+        
+        Debug.Log("Game Over Should Go Here");
+
+        if (playerDeathSound != null && audioSource != null)
+        {
+            Debug.Log("Playing 2 player death sound...");
+            audioSource.PlayOneShot(playerDeathSound);
+        }
+
+        SceneManager.LoadScene("Game Over");
+
+
+
         //string sceneName = (SceneManager.GetActiveScene().name == "Game Over") ? "Main Menu" : "Game Over";
         //SceneManager.LoadScene(sceneName);
 
@@ -128,6 +166,14 @@ public class GameManager : MonoBehaviour
     {
         currentCheckpoint = updatedCheckpoint;
         Debug.Log("Checkpoint updated");
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            currentMenuController.SetActiveState(MenuController.MenuStates.Pause);
+        }
     }
 
     //public void ResetPlayerStats()
